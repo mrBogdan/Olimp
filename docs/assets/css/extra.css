@@ -1,0 +1,351 @@
+/* ===========================================================
+   Кастомні стилі для курсу "Python для олімпіад"
+   =========================================================== */
+
+/* ---------- MathJax / формули ------------------------------- */
+.arithmatex {
+  font-size: 1.05em;
+}
+.md-typeset mjx-container {
+  margin: 0.2em 0;
+}
+.md-typeset mjx-container[display="true"] {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+/* Колір формул у темній темі */
+[data-md-color-scheme="slate"] mjx-container {
+  color: #e0e0e0;
+}
+
+/* ---------- Кольори та базові налаштування ------------------- */
+:root {
+  --md-admonition-icon--task: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 5h18v2H3zm0 6h18v2H3zm0 6h12v2H3z"/></svg>');
+  --md-admonition-icon--hint: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 21h6v-1H9zm3-19a7 7 0 0 0-4 12.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26A7 7 0 0 0 12 2z"/></svg>');
+  --md-admonition-icon--complexity: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8v4h2V3h-6v2h4l-8 8-4-4-8 8z"/></svg>');
+  --runner-bg: #1e1e1e;
+  --runner-fg: #d4d4d4;
+  --runner-accent: #569cd6;
+  --runner-success: #6a9955;
+  --runner-error: #f48771;
+}
+
+/* ---------- Кастомні admonition типи ----------------------- */
+.md-typeset .admonition.task,
+.md-typeset details.task {
+  border-color: #ff8a65;
+}
+.md-typeset .task > .admonition-title,
+.md-typeset details.task > .admonition-title {
+  background-color: rgba(255, 138, 101, 0.1);
+}
+.md-typeset .task > .admonition-title::before,
+.md-typeset details.task > .admonition-title::before {
+  -webkit-mask-image: var(--md-admonition-icon--task);
+          mask-image: var(--md-admonition-icon--task);
+  background-color: #ff8a65;
+}
+
+.md-typeset .admonition.hint,
+.md-typeset details.hint {
+  border-color: #4fc3f7;
+}
+.md-typeset .hint > .admonition-title,
+.md-typeset details.hint > .admonition-title {
+  background-color: rgba(79, 195, 247, 0.1);
+}
+.md-typeset .hint > .admonition-title::before,
+.md-typeset details.hint > .admonition-title::before {
+  -webkit-mask-image: var(--md-admonition-icon--hint);
+          mask-image: var(--md-admonition-icon--hint);
+  background-color: #4fc3f7;
+}
+
+.md-typeset .admonition.complexity,
+.md-typeset details.complexity {
+  border-color: #ba68c8;
+}
+.md-typeset .complexity > .admonition-title,
+.md-typeset details.complexity > .admonition-title {
+  background-color: rgba(186, 104, 200, 0.1);
+}
+.md-typeset .complexity > .admonition-title::before,
+.md-typeset details.complexity > .admonition-title::before {
+  -webkit-mask-image: var(--md-admonition-icon--complexity);
+          mask-image: var(--md-admonition-icon--complexity);
+  background-color: #ba68c8;
+}
+
+/* ---------- Бейджі складності ------------------------------- */
+.complexity-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  margin-right: 6px;
+  border-radius: 12px;
+  font-family: var(--md-code-font);
+  font-size: 0.78em;
+  font-weight: 600;
+  color: white;
+}
+.complexity-badge.o1      { background: #66bb6a; }
+.complexity-badge.ologn   { background: #26a69a; }
+.complexity-badge.on      { background: #ffa726; }
+.complexity-badge.onn     { background: #ef5350; }
+.complexity-badge.o2n     { background: #b71c1c; }
+.complexity-badge.onlogn  { background: #8e24aa; }
+
+/* ---------- Python Runner ----------------------------------- */
+.python-runner {
+  margin: 1.2em 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--runner-bg);
+  color: var(--runner-fg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.python-runner__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background: #252526;
+  color: #cccccc;
+  font-family: var(--md-code-font);
+  font-size: 0.8em;
+  border-bottom: 1px solid #333;
+}
+
+.python-runner__title::before {
+  content: "🐍 ";
+}
+
+.python-runner__status {
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+.python-runner__status.loading { color: #f0c674; }
+.python-runner__status.ready   { color: var(--runner-success); }
+.python-runner__status.error   { color: var(--runner-error); }
+
+.python-runner__editor {
+  display: block;
+  width: 100%;
+  min-height: 90px;
+  padding: 12px;
+  border: 0;
+  background: var(--runner-bg);
+  color: var(--runner-fg);
+  font-family: var(--md-code-font);
+  font-size: 0.85em;
+  line-height: 1.5;
+  resize: vertical;
+  outline: none;
+  tab-size: 4;
+}
+
+.python-runner__buttons {
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #252526;
+  border-top: 1px solid #333;
+}
+
+.python-runner__btn {
+  padding: 4px 12px;
+  border: 1px solid #3e3e42;
+  background: #3c3c3c;
+  color: #d4d4d4;
+  border-radius: 3px;
+  font-family: var(--md-code-font);
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.python-runner__btn:hover { background: #505050; }
+.python-runner__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.python-runner__btn--run {
+  background: #0e639c;
+  border-color: #0e639c;
+  color: white;
+}
+.python-runner__btn--run:hover:not(:disabled) {
+  background: #1177bb;
+}
+
+.python-runner__output {
+  padding: 10px 12px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: var(--md-code-font);
+  font-size: 0.82em;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border-top: 1px solid #333;
+  min-height: 24px;
+  max-height: 360px;
+  overflow: auto;
+}
+.python-runner__output:empty::before {
+  content: "▶ Натисніть Run, щоб виконати код";
+  color: #6a6a6a;
+  font-style: italic;
+}
+.python-runner__output .stdout { color: #d4d4d4; }
+.python-runner__output .stderr { color: var(--runner-error); }
+
+/* ---------- Task Runner (валідація тестами) ----------------- */
+.python-runner--task .python-runner__btn--tests {
+  background: #2d5a2d;
+  border-color: #2d5a2d;
+  color: white;
+}
+.python-runner--task .python-runner__btn--tests:hover:not(:disabled) {
+  background: #3a753a;
+}
+
+.python-runner__tests-info {
+  font-size: 0.78em;
+  opacity: 0.7;
+  margin-left: auto;
+  margin-right: 8px;
+}
+.python-runner__tests-info--warn {
+  color: var(--runner-error);
+  opacity: 0.9;
+}
+
+.python-runner__results {
+  padding: 12px;
+  background: #1e1e1e;
+  border-top: 1px solid #333;
+  font-family: var(--md-code-font);
+  font-size: 0.82em;
+  color: #d4d4d4;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.python-runner__results[hidden] { display: none; }
+
+.task-runner__progress {
+  font-style: italic;
+  color: #f0c674;
+}
+
+.task-runner__fatal {
+  color: var(--runner-error);
+}
+
+.task-runner__summary {
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.task-runner__summary--pass {
+  background: rgba(106, 153, 85, 0.2);
+  color: #b5d6a0;
+  border: 1px solid #6a9955;
+}
+.task-runner__summary--fail {
+  background: rgba(244, 135, 113, 0.15);
+  color: #f48771;
+  border: 1px solid #f48771;
+}
+
+.task-runner__test {
+  margin: 6px 0;
+  border-radius: 4px;
+  border: 1px solid #3e3e42;
+  background: #252526;
+}
+.task-runner__test--pass { border-color: #6a9955; }
+.task-runner__test--fail { border-color: #f48771; }
+
+.task-runner__test summary {
+  padding: 6px 10px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.task-runner__test summary::-webkit-details-marker { display: none; }
+.task-runner__test summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 6px;
+  transition: transform 0.15s;
+}
+.task-runner__test[open] summary::before { transform: rotate(90deg); }
+
+.task-runner__test-icon {
+  display: inline-block;
+  width: 18px;
+  font-weight: 700;
+}
+.task-runner__test--pass .task-runner__test-icon { color: #6a9955; }
+.task-runner__test--fail .task-runner__test-icon { color: #f48771; }
+
+.task-runner__test-body {
+  padding: 8px 12px 10px 34px;
+  border-top: 1px solid #3e3e42;
+}
+
+.task-runner__kv {
+  display: flex;
+  gap: 8px;
+  margin: 4px 0;
+  align-items: flex-start;
+}
+.task-runner__kv-key {
+  flex: 0 0 90px;
+  color: #9cdcfe;
+  font-weight: 600;
+}
+.task-runner__kv-pre {
+  flex: 1;
+  margin: 0;
+  padding: 4px 8px;
+  background: #1e1e1e;
+  border-radius: 3px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #d4d4d4;
+}
+.task-runner__kv--error .task-runner__kv-pre {
+  color: #f48771;
+  background: rgba(244, 135, 113, 0.08);
+}
+
+/* ---------- Розкривашки розв'язків ------------------------- */
+.solution {
+  border-left: 4px solid #66bb6a;
+  background: rgba(102, 187, 106, 0.08);
+  padding: 8px 12px;
+  margin: 1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.solution summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #66bb6a;
+}
+
+/* ---------- Покращення для друку --------------------------- */
+@media print {
+  .python-runner__buttons,
+  .python-runner__status,
+  .md-nav,
+  .md-header,
+  .md-sidebar {
+    display: none !important;
+  }
+}

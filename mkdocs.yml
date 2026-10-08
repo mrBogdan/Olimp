@@ -1,0 +1,106 @@
+site_name: Python для олімпіад
+site_description: Курс Python для підготовки учнів до олімпіад з програмування
+
+theme:
+  name: material
+  language: uk
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Темна тема
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Світла тема
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+extra_css:
+  - assets/css/extra.css
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - assets/js/lesson-enhancer.js
+  - assets/js/pyodide-runner.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: python-runner
+          class: python-runner-code
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: task-runner
+          class: task-runner-code
+          format: !!python/name:pymdownx.superfences.fence_code_format
+          attrs: {id: id}
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - Головна: index.md
+  - Модулі:
+      - Модуль 1 — Основи Python: modules/m01-basics/index.md
+      - Модуль 2 — Колекції: modules/m02-collections/index.md
+      - Модуль 3 — Функції: modules/m03-functions/index.md
+      - Модуль 4 — Вступ до алгоритмів: modules/m04-algorithms-intro/index.md
+      - Модуль 5 — Рекурсія: modules/m05-recursion/index.md
+      - Модуль 6 — Сортування: modules/m06-sorting/index.md
+      - Модуль 7 — Структури даних: modules/m07-data-structures/index.md
+      - Модуль 8 — Рядки та підрядки: modules/m08-strings/index.md
+      - Модуль 9 — Олімпіадні техніки: modules/m09-olympiad-techniques/index.md
+
+plugins:
+  - search:
+      separator: '[\s\-\.\_]+'
